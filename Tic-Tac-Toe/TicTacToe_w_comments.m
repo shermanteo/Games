@@ -9,18 +9,24 @@ clc
 
 %% Tic-tac-toe
 
-% Create 3x3 matrix full of zeros
+% Creates a 3x3 matrix called board and initializes all elements to 0. This represents the Tic-Tac-Toe grid, where 0 will represent an empty space, 1 will represent Player 1's mark, and 2 will represent Player 2's mark.
 board = zeros(3, 3);
 
 %% Check win function
+
+% Defines a function check_win that takes the board as an input and returns win, which will indicate the winner (1 or 2) or 0 if there's no winner yet.
 function win = check_win(board)
     % Check rows and columns
-    for i = 1:3
+    for i = 1:3 % A loop that iterates through each row (i) and column (i).
+        % Checks if all elements in the i-th row are the same as the first element in that row and not equal to 0. If true, this means Player 1 or Player 2 has won on this row.
         if all(board(i, :) == board(i, 1)) && board(i, 1) ~= 0
+            % If a win is detected in a row, the win variable is set to the value of the first element in that row (1 or 2), and the function immediately returns that winner.
             win = board(i, 1); % Return winner (1 or 2)
             return;
         end
+        % Checks if all elements in the i-th column are the same as the first element in that column and not equal to 0. If true, this means Player 1 or Player 2 has won on this column.
         if all(board(:, i) == board(1, i)) && board(1, i) ~= 0
+            % If a win is detected in a column, the win variable is set to the value of the first element in that column (1 or 2), and the function immediately returns that winner.
             win = board(1, i); % Return winner (1 or 2)
             return;
         end
